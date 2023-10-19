@@ -6,43 +6,34 @@ public class Player1 : MonoBehaviour
 {
     public float moveAmount = 1.0f; // amount of space each movement
     public Animator animator;
-    public float moveSpeed = .02f;
-    private float animationDuration = 1.0f; // Assume animation duration is 1 second. Adjust as needed.
+    public float moveSpeed = 5f;
+    private float animationDuration = .5f; // animation duration
+    float movement = 0f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        movement = Input.GetAxis("Horizontal");
+        if(movement < 0 )
         {
-            MoveLeft();
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            Move();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (movement > 0)
         {
-            MoveRight();
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            Move();
         }
-        animator.SetFloat("Speed", 0);
+
+        if (movement == 0)
+        {
+            animator.SetTrigger("Idle");
+        }
     }
 
-    void MoveLeft()
+    void Move()
     {
-        transform.position += new Vector3(-moveAmount, 0, 0);
-        animator.SetFloat("LeftSpeed", moveSpeed);
-        StartCoroutine(ResetSpeedAfterAnimation("LeftSpeed"));
-    }
-
-    void MoveRight()
-    {
-        transform.position += new Vector3(moveAmount, 0, 0);
-        animator.SetFloat("RightSpeed", moveSpeed);
-        StartCoroutine(ResetSpeedAfterAnimation("RightSpeed"));
-    }
-
-    IEnumerator ResetSpeedAfterAnimation(string parameterName)
-    {
-        // Wait for the duration of the animation
-        yield return new WaitForSeconds(animationDuration);
-
-        // Reset the speed value
-        animator.SetFloat(parameterName, 0);
+        animator.SetTrigger("Move");
+        transform.position += new Vector3(moveSpeed*movement*Time.deltaTime, 0, 0); 
     }
 }
