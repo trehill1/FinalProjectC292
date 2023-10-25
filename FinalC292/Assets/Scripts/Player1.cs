@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
-    public float moveAmount = 1.0f; // amount of space each movement
+    public float moveAmount = 1.5f; // amount of space each movement
     public Animator animator;
     public float moveSpeed = 5f;
     private float animationDuration = .5f; // animation duration
     float movement = 0f;
+    public GameManager gameManager;
+
 
     void Update()
     {
-        movement = Input.GetAxis("Horizontal");
-        if(movement < 0 )
+        if (gameManager.currentState == TurnState.PlayerTurn)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-            Move();
-        }
+            movement = Input.GetAxis("Horizontal");
 
-        if (movement > 0)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            Move();
-        }
+            if (movement < 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                Move(-moveAmount);
+                gameManager.EndPlayerTurn();
+            }
 
-        if (movement == 0)
-        {
-            animator.SetTrigger("Idle");
+            if (movement > 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                Move(moveAmount);
+                gameManager.EndPlayerTurn();
+
+            }
+
+            if (movement == 0)
+            {
+                animator.SetTrigger("Idle");
+            }
         }
     }
 
-    void Move()
+    void Move(float amount)
     {
         animator.SetTrigger("Move");
-        transform.position += new Vector3(moveSpeed*movement*Time.deltaTime, 0, 0); 
+        transform.position += new Vector3(amount, 0, 0); 
     }
 }
