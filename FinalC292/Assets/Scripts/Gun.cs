@@ -5,9 +5,10 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject projectilePrefab; 
-    public float shootSpeed = 20f;
+    public float shootSpeed = 1000f;
     public Transform shootPoint; 
     public Animator animator;
+    Player1 player;
 
 
     void Update()
@@ -21,16 +22,15 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        GameObject bullet = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-        if (transform.localScale.x < 0) 
-        {
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-shootSpeed*Time.deltaTime, 0);
-        }
-        else
-        {
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed*Time.deltaTime, 0);
-        }
+        // Check player's facing direction using SpriteRenderer's flipX
+        SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+        float direction = sr.flipX ? 1 : -1;
+
+        // Apply velocity to bullet depending on direction
+        rb.velocity = new Vector2(shootSpeed * direction, 0);
         animator.SetTrigger("Idle");
     }
 }
