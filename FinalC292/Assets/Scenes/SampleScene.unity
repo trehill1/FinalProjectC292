@@ -536,6 +536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 5554512077422987140, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6880261183589337900, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.4077687
@@ -1273,6 +1277,7 @@ MonoBehaviour:
   shootSpeed: 30
   shootPoint: {fileID: 898717515}
   animator: {fileID: 34688483}
+  player: {fileID: 34688482}
 --- !u!4 &1847838547
 Transform:
   m_ObjectHideFlags: 0

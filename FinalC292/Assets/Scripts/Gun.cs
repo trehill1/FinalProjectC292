@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     public float shootSpeed = 1000f;
     public Transform shootPoint; 
     public Animator animator;
-    Player1 player;
+    public Player1 player;
 
 
     void Update()
