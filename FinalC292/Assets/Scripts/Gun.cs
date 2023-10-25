@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject projectilePrefab; 
-    public float shootSpeed = 1000f;
+    public float shootSpeed = 20f;
     public Transform shootPoint; 
     public Animator animator;
     public Player1 player;
@@ -23,14 +23,15 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        Bullet bullet1 = bullet.GetComponent<Bullet>();
 
         // Check player's facing direction using SpriteRenderer's flipX
         SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
-        float direction = sr.flipX ? 1 : -1;
+        Vector2 direction1 = sr.flipX ? Vector2.right : Vector2.left;
 
         // Apply velocity to bullet depending on direction
-        rb.velocity = new Vector2(shootSpeed * direction, 0);
+        bullet1.direction = direction1;
+        bullet1.speed = shootSpeed;
         animator.SetTrigger("Idle");
     }
 }

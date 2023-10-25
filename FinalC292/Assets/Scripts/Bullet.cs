@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D other)
+    public float speed = 20f;
+    public Vector2 direction; 
+
+    void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hit: " + other);
+
         if (other.gameObject.CompareTag("Zombie"))
         {
             Destroy(other.gameObject);  // Destroy the zombie
             Destroy(gameObject);       // Destroy the bullet
         }
-        else if (other.gameObject.CompareTag("Boundary"))
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boundary"))
         {
-            Destroy(gameObject);       // Destroy the bullet
+            Destroy(gameObject); //Destroy the bullet
         }
+    }
+    private void Update()
+    {
+        transform.Translate(speed * direction * Time.deltaTime);
     }
 }

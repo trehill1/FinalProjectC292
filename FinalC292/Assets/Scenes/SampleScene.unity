@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 34688480}
   - component: {fileID: 34688482}
   - component: {fileID: 34688483}
+  - component: {fileID: 34688484}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -247,6 +248,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &34688484
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34688479}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 2
 --- !u!1 &152401808
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +529,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391666728}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -518,7 +546,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!1001 &464535472
 PrefabInstance:
@@ -534,6 +562,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300634207638483715, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
       propertyPath: m_Name
+      value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300634207638483715, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
+      propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 5554512077422987140, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
@@ -579,6 +611,10 @@ PrefabInstance:
     - target: {fileID: 6880261183589337900, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626356368375231125, guid: 154c85c60bafbe344a676d9ed67bf23d, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1256,7 +1292,7 @@ GameObject:
   - component: {fileID: 1847838546}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1274,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7367483504857473028, guid: 7d77e75bb009b4a43967ab1f70a1126a, type: 3}
-  shootSpeed: 30
+  shootSpeed: 10
   shootPoint: {fileID: 898717515}
   animator: {fileID: 34688483}
   player: {fileID: 34688482}
