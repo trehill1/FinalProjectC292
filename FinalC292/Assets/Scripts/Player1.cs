@@ -14,7 +14,7 @@ public class Player1 : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.currentState == TurnState.PlayerTurn)
+        if (gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
         {
             movement = Input.GetAxis("Horizontal");
 

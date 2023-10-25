@@ -4,14 +4,19 @@ using System.Diagnostics.Contracts;
 using UnityEngine;
 
 
-public enum TurnState
-{
-    PlayerTurn,
-    EnemyTurn,
-}
 public class GameManager : MonoBehaviour
 {
-    public TurnState currentState;
+    public enum TurnState
+    {
+        PlayerTurn,
+        EnemyTurn,
+    }
+
+    private TurnState currentState;
+    public TurnState CurrentState
+    {
+        get { return currentState; }
+    }
 
 
     private void Start()
@@ -33,13 +38,6 @@ public class GameManager : MonoBehaviour
                 break;
 
             case TurnState.EnemyTurn:
-                HandleEnemyActions();
-
-                // If a certain condition is met, you can end the enemy's turn.
-                if (Input.GetKeyDown(KeyCode.Return)) 
-                {
-                    EndEnemyTurn();
-                }
                 break;
         }
     }
@@ -52,9 +50,5 @@ public class GameManager : MonoBehaviour
     public void EndEnemyTurn()
     {
         currentState = TurnState.PlayerTurn;
-    }
-
-    void HandleEnemyActions() { 
-
     }
 }
