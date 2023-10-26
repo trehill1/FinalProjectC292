@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
         EnemyTurn,
     }
 
+    public Zombie zombie; // Reference to the Zombie script
     private TurnState currentState;
+
     public TurnState CurrentState
     {
         get { return currentState; }
     }
-
 
     private void Start()
     {
@@ -29,9 +30,7 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case TurnState.PlayerTurn:
-
-                // If a certain condition is met, you can end the player's turn.
-                if (Input.GetKeyDown(KeyCode.Space)) 
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     EndPlayerTurn();
                 }
