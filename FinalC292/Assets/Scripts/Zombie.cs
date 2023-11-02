@@ -5,30 +5,22 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 
 {
-    public float moveAmount = 1.5f;
+    public float moveAmount = 1f;
     public Animator animator;
-    float moveSpeed = 5f;
-    public GameManager gameManager;
-    float movement = 0f;
+    private GameManager gameManager;
+    //bool hasMoved = false;
 
-    private void Update()
+    private void Awake()
     {
-        if (gameManager.CurrentState == GameManager.TurnState.EnemyTurn)
-        {
-            Move(moveAmount);
-            movement = Input.GetAxis("Horizontal");
-
-            if (movement == 0)
-            {
-                animator.SetTrigger("Idle");
-                gameManager.EndEnemyTurn();
-            }
-        }
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        int rand = Random.Range(1,2);
+        moveAmount = rand;
     }
-    public void Move(float amount)
+
+    public void Move()
     {
-        animator.SetTrigger("Move");
-        transform.position += new Vector3(amount, 0, 0) * Time.deltaTime;
+        //animator.SetTrigger("Move");
+        transform.position += new Vector3(moveAmount, 0, 0);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -37,8 +29,8 @@ public class Zombie : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);  // Destroy the zombie
-            Destroy(gameObject);       // Destroy the bullet
+            Destroy(other.gameObject);  // Destroy the player
+            Destroy(gameObject);       // Destroy the zombie
         }
     }
 }

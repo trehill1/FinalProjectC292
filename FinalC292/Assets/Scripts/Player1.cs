@@ -10,39 +10,52 @@ public class Player1 : MonoBehaviour
     private float animationDuration = .5f; // animation duration
     float movement = 0f;
     public GameManager gameManager;
+    public bool hasMoved = false;
 
 
     void Update()
     {
-        if (gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
-        {
+        //if (gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
+        //{
             movement = Input.GetAxis("Horizontal");
 
             if (movement < 0)
             {
-                gameObject.GetComponent<SpriteRenderer>().flipX = false;
-                Move(-moveAmount);
-                gameManager.EndPlayerTurn();
+                if (hasMoved == false)
+                {
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                    Move(-moveAmount);
+                } 
+                else
+                {
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
 
             if (movement > 0)
             {
-                gameObject.GetComponent<SpriteRenderer>().flipX = true;
-                Move(moveAmount);
-                gameManager.EndPlayerTurn();
-
+                if (hasMoved == false)
+                {
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                    Move(moveAmount);
+                }
+                else
+                {
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
 
             if (movement == 0)
             {
                 animator.SetTrigger("Idle");
             }
-        }
+        //}
     }
 
     void Move(float amount)
     {
         animator.SetTrigger("Move");
-        transform.position += new Vector3(amount, 0, 0); 
+        transform.position += new Vector3(amount, 0, 0);
+        hasMoved = true;
     }
 }

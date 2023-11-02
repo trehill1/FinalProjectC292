@@ -6,7 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public Vector2 direction; 
+    public Vector2 direction;
+    public GameManager game;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,6 +17,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(other.gameObject);  // Destroy the zombie
             Destroy(gameObject);       // Destroy the bullet
+            game.EndPlayerTurn();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

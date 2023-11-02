@@ -9,14 +9,16 @@ public class Gun : MonoBehaviour
     public Transform shootPoint; 
     public Animator animator;
     public Player1 player;
+    public GameManager gameManager;
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
         {
             animator.SetTrigger("Shoot");
             Shoot();
+            gameManager.EndPlayerTurn();
         }
     }
 
@@ -33,5 +35,6 @@ public class Gun : MonoBehaviour
         bullet1.direction = direction1;
         bullet1.speed = shootSpeed;
         animator.SetTrigger("Idle");
+        //Debug.Break();
     }
 }

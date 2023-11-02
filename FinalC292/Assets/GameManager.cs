@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class GameManager : MonoBehaviour
 {
+    public Player1 player1;
     public enum TurnState
     {
         PlayerTurn,
         EnemyTurn,
     }
 
-    public Zombie zombie; // Reference to the Zombie script
-    private TurnState currentState;
+    public Zombie zombie;
+
+    public  TurnState currentState;
 
     public TurnState CurrentState
     {
@@ -22,32 +25,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = TurnState.PlayerTurn;
+        //currentState = TurnState.PlayerTurn;
+        //Debug.Log(currentState);
     }
 
-    private void Update()
-    {
-        switch (currentState)
-        {
-            case TurnState.PlayerTurn:
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    EndPlayerTurn();
-                }
-                break;
-
-            case TurnState.EnemyTurn:
-                break;
-        }
-    }
 
     public void EndPlayerTurn()
     {
-        currentState = TurnState.EnemyTurn;
+        //currentState = TurnState.EnemyTurn;
+        player1.hasMoved = false; 
+        Debug.Log(currentState);
+        foreach(GameObject z in GameObject.FindGameObjectsWithTag("Zombie"))
+        {
+            z.GetComponent<Zombie>().Move();
+        }
     }
 
-    public void EndEnemyTurn()
-    {
-        currentState = TurnState.PlayerTurn;
-    }
+    //public void EndEnemyTurn()
+    //{
+       // currentState = TurnState.PlayerTurn;
+       // Debug.Log(currentState);
+    //}
 }
