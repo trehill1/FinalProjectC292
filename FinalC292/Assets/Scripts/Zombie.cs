@@ -13,8 +13,8 @@ public class Zombie : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        int rand = Random.Range(1,2);
-        moveAmount = rand;
+        //int rand = Random.Range(1,1);
+        //moveAmount = rand;
     }
 
     public void Move()
@@ -25,7 +25,7 @@ public class Zombie : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit: " + other);
+        //Debug.Log("Hit: " + other);
 
         if (other.gameObject.CompareTag("Player"))
         {

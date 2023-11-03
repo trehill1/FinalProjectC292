@@ -7,6 +7,14 @@ TagManager:
   - Zombie
   - Bullet
   - Boundary
+  - Start
+  - Medieval
+  - Dark
+  - Dessert
+  - Snow
+  - Urban
+  - Final
+  - FirstText
   layers:
   - Default
   - TransparentFX

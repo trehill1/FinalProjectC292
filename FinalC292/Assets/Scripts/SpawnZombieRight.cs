@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnZombieRight : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public float spawnRate = 10f;
+    public float spawnRate = 2f;
     public Vector3 spawnRange = new Vector3(0, 0, 0);
     public bool isLeft = true;
 

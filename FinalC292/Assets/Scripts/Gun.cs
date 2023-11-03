@@ -16,6 +16,10 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
         {
+            if (gameManager.FirstText.gameObject == true)
+            {
+                gameManager.FirstText.gameObject.SetActive(false);
+            }
             animator.SetTrigger("Shoot");
             Shoot();
             gameManager.EndPlayerTurn();

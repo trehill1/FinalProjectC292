@@ -23,6 +23,10 @@ public class Player1 : MonoBehaviour
             {
                 if (hasMoved == false)
                 {
+                    if (gameManager.FirstText.gameObject == true)
+                    {
+                    gameManager.FirstText.gameObject.SetActive(false);
+                    }
                     gameObject.GetComponent<SpriteRenderer>().flipX = false;
                     Move(-moveAmount);
                 } 
@@ -34,11 +38,15 @@ public class Player1 : MonoBehaviour
 
             if (movement > 0)
             {
-                if (hasMoved == false)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
-                    Move(moveAmount);
-                }
+                if (hasMoved == false) { 
+                  if (gameManager.FirstText.gameObject == true)
+                   {
+                   gameManager.FirstText.gameObject.SetActive(false);
+                   }
+        
+                   gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                   Move(moveAmount);
+                   }
                 else
                 {
                     gameObject.GetComponent<SpriteRenderer>().flipX = true;

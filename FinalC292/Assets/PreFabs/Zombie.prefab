@@ -161,5 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440e46a1ba4d91141a5407345190b3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAmount: 1
+  moveAmount: 0.5
   animator: {fileID: 0}
