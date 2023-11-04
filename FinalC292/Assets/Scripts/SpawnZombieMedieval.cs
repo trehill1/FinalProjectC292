@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class SpawnZombieRight : MonoBehaviour
+public class SpawnZombieMedieval : MonoBehaviour
 {
     public GameObject objectToSpawn;
     public float spawnRate = 5f;

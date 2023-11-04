@@ -14,12 +14,22 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && gameManager.CurrentState == GameManager.TurnState.PlayerTurn)
-        {
+        if (Input.GetKeyDown(KeyCode.Space)){
+            //Text Boxes
             if (gameManager.FirstText.gameObject == true)
             {
                 gameManager.FirstText.gameObject.SetActive(false);
             }
+            if(gameManager.FirstTeleportBool == true)
+            {
+                gameManager.FirstTeleportText.gameObject.SetActive(false);
+            }
+            if(gameManager.FishingBool == true)
+            {
+                gameManager.FishingText.gameObject.SetActive(false);
+            }
+
+            //Shoot mechnics
             animator.SetTrigger("Shoot");
             Shoot();
             gameManager.EndPlayerTurn();
