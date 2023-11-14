@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Zombie : MonoBehaviour
 
@@ -31,6 +32,7 @@ public class Zombie : MonoBehaviour
         {
             Destroy(other.gameObject);  // Destroy the player
             Destroy(gameObject);       // Destroy the zombie
+            SceneManager.LoadScene(2);
         }
     }
 }
