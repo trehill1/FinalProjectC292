@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     public Animator animator;
     public Player1 player;
     public GameManager gameManager;
+    public GameObject ThoughtBubble;
 
 
     void Update()
@@ -19,15 +20,44 @@ public class Gun : MonoBehaviour
             if (gameManager.FirstText.gameObject == true)
             {
                 gameManager.FirstText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
             }
             if(gameManager.FirstTeleportBool == true)
             {
                 gameManager.FirstTeleportText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
             }
             if(gameManager.FishingBool == true)
             {
                 gameManager.FishingText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
             }
+            if(gameManager.DarkLandBool == true)
+            {
+                gameManager.DarkLandText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
+            }
+            if(gameManager.SnowLandBool == true)
+            {
+                gameManager.SnowLandText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
+            }
+            if (gameManager.UrbanLandBool == true)
+            {
+                gameManager.UrbanLandText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
+            }
+            if(gameManager.UrbanFunnyBool == true)
+            {
+                gameManager.UrbanFunnyText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
+            }
+            if (gameManager.FinalLandBool == true)
+            {
+                gameManager.FinalLandText.gameObject.SetActive(false);
+                ThoughtBubble.SetActive(false);
+            }
+
 
             //Shoot mechnics
             animator.SetTrigger("Shoot");

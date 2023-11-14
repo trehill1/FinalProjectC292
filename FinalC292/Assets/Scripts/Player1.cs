@@ -40,7 +40,7 @@ public class Player1 : MonoBehaviour
             {
                 transform.position = new Vector3(1.1f, -1.82f, 0);
             }
-                if (hasMoved == true)
+                if (hasMoved == false)
                 {
                     //Text Boxes
                     if (gameManager.FirstText.gameObject == true)
@@ -57,16 +57,14 @@ public class Player1 : MonoBehaviour
                     }
                 //Sprite and Movement
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
-                    if (isStart == false)
-                    {
-                    Move2(-moveAmount);
-                    }
-                    else
+                    if (isStart == true)
                     {
                     Move(-moveAmount);
+                    }else {
+                    Move2(-moveAmount);
                     }
 
-            } 
+                 } 
                 else
                 {
                     gameObject.GetComponent<SpriteRenderer>().flipX = false;
@@ -96,13 +94,13 @@ public class Player1 : MonoBehaviour
 
                 //sprite and movement
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
-                    if (isStart == false)
+                    if (isStart == true)
                     {
                         
-                        Move2(moveAmount);
+                        Move(moveAmount);
                     }else{
                     
-                    Move(moveAmount);
+                    Move2(moveAmount);
                     }
                    }
                 else

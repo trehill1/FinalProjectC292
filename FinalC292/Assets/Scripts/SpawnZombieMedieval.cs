@@ -5,18 +5,35 @@ using UnityEngine;
 public class SpawnZombieMedieval : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public float spawnRate = 5f;
+    float spawnRate = 2f;
     public Vector3 spawnRange = new Vector3(0, 0, 0);
     public bool isLeft = true;
+    int x = 0;
 
     private float nextSpawnTime;
     void Update()
     {
+        if(x > 5)
+        {
+            spawnRate = 3f;
+        }
+
+        if(x > 10)
+        {
+            spawnRate = 4f;
+        }
+
         if (Time.time > nextSpawnTime)
         {
             SpawnObject();
             nextSpawnTime = Time.time + spawnRate;
+            x = x + 1;
         }
+    }
+
+    void setspawnRate(float x)
+    {
+        spawnRate = x; 
     }
     void SpawnObject()
     {

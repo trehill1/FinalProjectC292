@@ -15,14 +15,26 @@ public class GameManager : MonoBehaviour
     public Player1 player;
     //Score Int
     public int score = 0;
+    public int turnNum = 0;
     //UI 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI FirstText;
     public TextMeshProUGUI FirstTeleportText;
-    public TextMeshProUGUI FishingText; 
+    public TextMeshProUGUI FishingText;
+    public TextMeshProUGUI DarkLandText;
+    public TextMeshProUGUI SnowLandText;
+    public TextMeshProUGUI UrbanLandText;
+    public TextMeshProUGUI FinalLandText;
+    public TextMeshProUGUI UrbanFunnyText;
+
     //UI Bools
     public bool FirstTeleportBool = false;
     public bool FishingBool = false;
+    public bool DarkLandBool = false; 
+    public bool SnowLandBool = false;
+    public bool UrbanLandBool = false;
+    public bool FinalLandBool = false;
+    public bool UrbanFunnyBool = false;
 
     //background gameobjects
     public GameObject StartBackground;
@@ -40,7 +52,9 @@ public class GameManager : MonoBehaviour
     public GameObject spawnZLM;
     public GameObject spawnZRM;
 
+    public GameObject ThoughtBubble;
 
+   
     bool MedTeleport = true;
     
 
@@ -98,6 +112,7 @@ public class GameManager : MonoBehaviour
             spawnZRS.gameObject.SetActive(false);
             spawnZLM.gameObject.SetActive(true);
             spawnZRM.gameObject.SetActive(true);
+            ThoughtBubble.SetActive(true);
             FirstTeleportText.gameObject.SetActive(true);
             FirstTeleportBool = true;
             player.isStart = false;
@@ -107,21 +122,39 @@ public class GameManager : MonoBehaviour
         {
             DarkBackground.gameObject.SetActive(true);
             medievalBackground.gameObject.SetActive(false);
+            ThoughtBubble.SetActive(true);
+            DarkLandText.gameObject.SetActive(true);
+            DarkLandBool = true;
         }
         if (score == 150)
         {
             snowBackground.gameObject.SetActive(true);
             DarkBackground.gameObject.SetActive(false);
+            ThoughtBubble.SetActive(true);
+            SnowLandText.gameObject.SetActive(true);
+            SnowLandBool = true;
         }
         if (score == 200)
         {
             urbanBackground.gameObject.SetActive(true);
             snowBackground.gameObject.SetActive(false);
+            ThoughtBubble.SetActive(true);
+            UrbanLandText.gameObject.SetActive(true);
+            UrbanLandBool = true;
         }
-        if (score == 250)
+        if(score == 250)
+        {
+            ThoughtBubble.SetActive(true);
+            UrbanLandText.gameObject.SetActive(true);
+            UrbanFunnyBool = true;
+        }
+        if (score == 300)
         {
             FinalBackground.gameObject.SetActive(true);
             urbanBackground.gameObject.SetActive(false);
+            ThoughtBubble.SetActive(true);
+            FinalLandText.gameObject.SetActive(true);
+            FinalLandBool = true;
         }
     }
 
@@ -138,6 +171,7 @@ public class GameManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
+        turnNum = turnNum + 1;
         //currentState = TurnState.EnemyTurn;
         player.hasMoved = false; 
         //Debug.Log(currentState);
