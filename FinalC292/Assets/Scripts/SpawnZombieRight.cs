@@ -17,16 +17,19 @@ public class SpawnZombieRight : MonoBehaviour
 
     void Update()
     {
-        if (x > 5)
+        if (!PauseMenu.isPaused)
         {
-            spawnRate = 3f;
-        }
+            if (x > 5)
+            {
+                spawnRate = 3f;
+            }
 
-        if (Time.time > nextSpawnTime)
-        {
-            SpawnObject();
-            nextSpawnTime = Time.time + spawnRate;
-            x = x + 1;
+            if (Time.time > nextSpawnTime)
+            {
+                SpawnObject();
+                nextSpawnTime = Time.time + spawnRate;
+                x = x + 1;
+            }
         }
     }
     void SpawnObject()

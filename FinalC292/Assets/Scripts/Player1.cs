@@ -33,81 +33,92 @@ public class Player1 : MonoBehaviour
 
         movement = Input.GetAxis("Horizontal");
 
-            
-            if (movement < 0)
+
+        if (movement < 0)
+        {
+            if (!PauseMenu.isPaused)
             {
-            if (hasFished)
-            {
-                transform.position = new Vector3(1.1f, -1.82f, 0);
-            }
+                if (hasFished)
+                {
+                    transform.position = new Vector3(1.1f, -1.82f, 0);
+                }
                 if (hasMoved == false)
                 {
                     //Text Boxes
                     if (gameManager.FirstText.gameObject == true)
                     {
-                    gameManager.FirstText.gameObject.SetActive(false);
+                        gameManager.FirstText.gameObject.SetActive(false);
                     }
                     if (gameManager.FirstTeleportBool == true)
                     {
-                    gameManager.FirstTeleportText.gameObject.SetActive(false);
+                        gameManager.FirstTeleportText.gameObject.SetActive(false);
                     }
                     if (gameManager.FishingBool == true)
                     {
-                    gameManager.FishingText.gameObject.SetActive(false);
+                        gameManager.FishingText.gameObject.SetActive(false);
                     }
-                //Sprite and Movement
-                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                    //Sprite and Movement
+                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
                     if (isStart == true)
                     {
-                    Move(-moveAmount);
-                    }else {
-                    Move2(-moveAmount);
+                        Move(-moveAmount);
+                    }
+                    else
+                    {
+                        Move2(-moveAmount);
                     }
 
-                 } 
+                }
                 else
                 {
                     gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
             }
+        }
 
-            if (movement > 0)
+        if (movement > 0)
+        {
+            if (!PauseMenu.isPaused)
             {
-            if (hasFished)
-            {
-                transform.position = new Vector3(1.1f, -1.82f, 0);
-            }
-            if (hasMoved == false) { 
-                  //Text boxes
-                  if (gameManager.FirstText.gameObject == true)
-                   {
-                   gameManager.FirstText.gameObject.SetActive(false);
-                   }
-                   if (gameManager.FirstTeleportBool == true)
-                   {
-                   gameManager.FirstTeleportText.gameObject.SetActive(false);
-                   }
+                if (hasFished)
+                {
+                    transform.position = new Vector3(1.1f, -1.82f, 0);
+                }
+                if (hasMoved == false)
+                {
+                    //Text boxes
+                    if (gameManager.FirstText.gameObject == true)
+                    {
+                        gameManager.FirstText.gameObject.SetActive(false);
+                    }
+                    if (gameManager.FirstTeleportBool == true)
+                    {
+                        gameManager.FirstTeleportText.gameObject.SetActive(false);
+                    }
                     if (gameManager.FishingBool == true)
                     {
-                    gameManager.FishingText.gameObject.SetActive(false);
+                        gameManager.FishingText.gameObject.SetActive(false);
                     }
 
-                //sprite and movement
-                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                    //sprite and movement
+                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
                     if (isStart == true)
                     {
-                        
+
                         Move(moveAmount);
-                    }else{
-                    
-                    Move2(moveAmount);
                     }
-                   }
+                    else
+                    {
+
+                        Move2(moveAmount);
+                    }
+                }
                 else
                 {
                     gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
             }
+        }
 
             if (movement == 0)
             {

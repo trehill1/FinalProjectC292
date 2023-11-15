@@ -58,11 +58,13 @@ public class Gun : MonoBehaviour
                 ThoughtBubble.SetActive(false);
             }
 
-
-            //Shoot mechnics
-            animator.SetTrigger("Shoot");
-            Shoot();
-            gameManager.EndPlayerTurn();
+            if (!PauseMenu.isPaused)
+            {
+                //Shoot mechnics
+                animator.SetTrigger("Shoot");
+                Shoot();
+                gameManager.EndPlayerTurn();
+            }
         }
     }
 
