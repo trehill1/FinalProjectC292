@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         if(score == 250)
         {
             ThoughtBubble.SetActive(true);
-            UrbanLandText.gameObject.SetActive(true);
+            UrbanFunnyText.gameObject.SetActive(true);
             UrbanFunnyBool = true;
         }
         if (score == 300)
